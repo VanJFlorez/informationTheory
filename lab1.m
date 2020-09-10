@@ -14,15 +14,18 @@ f_saw = @(t) 2 * mod(t, 5);
 % Script OCTAVE para la serie de Fourier de una onda periódica cuadrada.
 
 t=[-1:0.01:1];
-f_square = inline('(t >= 0) & (t < 1)', 't')
+f_wave = inline('(t >= 0) & (t < 1)', 't')
 T_0 = 1;
-y = f_square(t)';
-f_square_06 = f_square(-1) %% should equal 0
+f_wave_06 = f_wave(-1) %% should equal 0
 % plot(t, f_square(t)); axis([-2 2 -2 2]);
 
+function integrand(t_i)
+  f_wave(5)*cos(n*w_0*5)
+endfunction
+
+n = 1
 t_0 = 0;
 w_0 = 2*pi/T_0;
-integrand = f(t)*cos(n*w_0*t);
 a = quad(integrand, t_0, t_0 + T_0)
 
 

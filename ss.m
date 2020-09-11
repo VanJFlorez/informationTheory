@@ -1,24 +1,24 @@
 clc
 clear 
 
-%% PROGRAM PARAMS
-L = pi;
-N = 1024;
-dx = 2*L/(N-1);
-x = -L:dx:L;
-T0 = 2*L;
 
-%% WAVE FUNCTION
-f = 0*x;
-% f(N/4:N/2) = 4*(1:N/4+1)/N;
-% f(N/2+1:3*N/4) = 1-4*(0:N/4-1)/N;
-f(N/4:3*N/4) = 1;
-% plot(x,f,'-k','LineWidth',1.5); hold on; axis([-2 2 -2 2])
+f_saw = @(t) 2 * mod(t, 5);
+% fplot(f, [-10 10])
 
-%% 
-CC = jet(20);
-A0 = sum(f.*ones(size(x)))*dx;
-for k=1:20
-  A(k) = sum(f.*cos(2*pi*k*x/T0))*dx;
+N = 10
+t=[-1:0.01:2];
+f_wave = inline('(t >= 0)', 't')
+T_0 = 1;
+f_wave_06 = f_wave(-1) %% should equal 0
+%% plot(t, f_wave(t)); axis([-2 2 -2 2]);
+
+for i=1:N
+  a_n = quad(f_wave, T_0, )
+  
 endfor
+
+
+
+
+
 

@@ -1,24 +1,27 @@
-clc
-clear 
+% Script OCTAVE para observar la transformada de Fourier de una función periódica.
+% Muestreando una señal sinusoidal  de 1 Hz se ilustra cómo es la señal y su espectro.
 
+T=1;         % duración de la señal
+f0=1;        % valor de la frecuencia lineal
 
-f_saw = @(t) 2 * mod(t, 5);
-% fplot(f, [-10 10])
+fs=50*f0; 
+Ts=1/fs;     % intervalo de muestreo y frecuencia de muestreo
+t=[0:Ts:T];  % vector de tiempo
+x=cos(20*pi*f0*t); 
+X=fft(x)*Ts; % sinusoidal muestreada y su transformada de Fourier
+f=[0:50];    % vector de frecuencias
 
-N = 10
-t=[-1:0.01:2];
-f_wave = inline('(t >= 0)', 't')
-T_0 = 1;
-f_wave_06 = f_wave(-1) %% should equal 0
-%% plot(t, f_wave(t)); axis([-2 2 -2 2]);
+% printf("Presione <ENTER> para ver gráficas de la sinusoidal muestreada y de su espectro de magnitud"); pause; clf;
+%%%%%%%%%%%%%%%%
+subplot(2,1,1); 
+plot(t,x,'k'); 
+axis([0 1 -1.1 1.1]); 
+xlabel('nT_s'); 
+ylabel('x(nT_s)');
 
-for i=1:N
-  a_n = quad(f_wave, T_0, )
-  
-endfor
-
-
-
-
-
-
+%%%%%%%%%%%%%%%%
+subplot(2,1,2); 
+plot(f-(fs/2),fftshift(abs(X)),'k'); 
+axis([-25 25 -0.6 0.6]); 
+xlabel('f'); 
+ylabel('|X(f)|');

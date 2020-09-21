@@ -1,13 +1,13 @@
 %
-
-To = 1;   
-fo = 1;
-f = 50*fo;    
-T = 1/f;  
+% ENTRADAS
+To = 1;          % Periodo fundamental
+fo = 1/To;       % Frecuencia fundamental
+f = 50*fo;       % Muestreo (cantidad)
+T = 1/f;         % Muestreo (tamaño)
 a = 0.25;     %Segmento -> T/4
 
-pa = inline('(abs(t) < a)','t');
-t = [-To/2:T:To/2];
+pa = inline('(abs(t) < a)','t'); % pulso unitario
+t = [-To/2:T:To/2];              % dominio de tiempo
 
 %Grafica de pulso rectangular pa
 
@@ -19,7 +19,7 @@ grid;
 %Transformada de Fourier normal
 
 sa = inline('(sin(x) + (x==0))./ (x + (x==0))','x');
-w = [-f/2:f/2];
+w = [-f/2:f/2];             % dominio de frecuencia
 subplot(3,1,2);
 stem(w,abs(2*a*sa(w*a)), 'm');
 xlabel("w");ylabel('X(w)');legend('F(x(t))');

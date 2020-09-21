@@ -1,7 +1,8 @@
 
 t = [-2:0.01:2];
-To = 4; %Las ondas se repite cada 4 unidades
+To = 4; %Las ondas se repite cada 4 unidades (el periodo)
 
+% se grafica para cada valor de truncamiento
 plot(t,(t<1)&(t>-1),'k',
      t,FourierT(t,1,To),'r',
      t,FourierT(t,5,To),'b',

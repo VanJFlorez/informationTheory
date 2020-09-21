@@ -131,3 +131,14 @@ xlabel('\t');ylabel('y(t)');title('BSF de señal');
 axis([-0.8 0.8 -0.5 1.2]);legend('y(t)','pa(t)');
 grid;
 
+figure(3)
+subplot(4, 1, 1)
+plot(w,LPF(w));
+subplot(4, 1, 2)
+plot(w,HPF(w));
+subplot(4, 1, 3)
+plot(w,BPF(w));
+subplot(4, 1, 4)
+plot(w,BSF(w));
+
+

@@ -8,7 +8,7 @@ plot(t,(t<1)&(t>-1),'k',
      t,FourierT(t,10,To),'g',
      t,FourierT(t,20,To),'m',
      t,FourierT(t,40,To),'c');
-     
+           
 grid;
 xlabel('t');
 ylabel('x(t)');

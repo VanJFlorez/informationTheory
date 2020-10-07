@@ -6,8 +6,9 @@ clc;
 
 
 t0 = 1;                    % duración de la señal
-f  = 1;                    % frecuencia de la senal = 1 Hz         
-m  = @(tt) cos(2*pi*f*tt); % senal original
+f  = 1;                    % frecuencia de la senal = 1 Hz
+A  = 1;                    % amplitud (max. val.)
+m  = @(tt) A*sin(2*pi*f*tt); % senal original
          
 ###########################################################
 # SIGNAL ENCODING
@@ -16,20 +17,30 @@ m  = @(tt) cos(2*pi*f*tt); % senal original
 # SAMPLING ------------------
 Ts = 1/10;        % intervalo de muestreo 
 fs = 1/Ts;       % frecuencia de muestreo. Notar que fs > f ~> 5 > 1
-ts=[0:Ts:t0];    % tiempo muestreo
-ms = m(ts);      % senal muestreada
+ts = [0:Ts:t0];    % tiempo muestreo
+ms = m(ts);      % senal muestreada '(ms) m sampled'
 
-# QUANTIZING ----------------
-xq=cuantUniforme(ms,1,2); 
-
-figure(1)
-subplot(2,2,1); 
-plot(ts,ms,'k'); 
+subplot(2, 2, 1); 
+plot(ts, ms, 'k'); 
 axis([0 t0 -1.1 1.1]); 
 xlabel('nT_s'); 
 ylabel('x(nT_s)');
 
+# QUANTIZING ----------------
+WW = 3;             % wordsize in bits. number of levels L = 2^W
+ms_q = cuantUniforme(ms, A, WW);   % senal muestreada cuatizada '(msq) m sampled quatized'
+subplot(2, 2, 3);
+plot(ts, ms_q, 'k');
+grid;
+grid minor;
+
 # ENCODING ------------------
+ms_qcodes = encodeQuant(ms_q, A, WW)
+ms_qcodes_bin = []; % senal muestreada cuatizada '(msq_codes) m sampled quatized with code level numbers'
+
+# u = repelem(v,3)
+
+
 # TODO
 # TODO
 
@@ -43,9 +54,7 @@ decoded_ms = 0;
 for j = ts  % cada j es un paso de Ts
   decoded_ms += m(j)*sa(2*pi*f*(t - j)); % la forma correcta es multiplicar por ms, no por m(ts)
   subplot(2,2,2); 
-  plot(t,decoded_ms,'-k'); hold on
-  pause(.1);
+  # plot(t,decoded_ms,'-k'); hold on
+  # pause(.1);
 endfor
-
-
-# axis([0 t0 -1.1 1.1]); 
+plot(t,decoded_ms,'-k');

@@ -1,14 +1,14 @@
-% LABORATORIO 2 - Transmisi髇 digital de se馻les analogicas
+% LABORATORIO 2 - Transmisi贸n digital de se帽ales analogicas
 
 %---------------Muestreo----------------------
-t0 = 1;     %Duraci髇 de la se馻l mensaje 
-f0 = 1;       %Frecuencia de la se馻l
+t0 = 1;     %Duraci贸n de la se帽al mensaje 
+f0 = 1;       %Frecuencia de la se帽al
 T = 1/10;    %Intervalo de muestreo
 %T = 1/100;    %Intervalo de muestreo
 F = 1/T;      %Frecuencia de muestreo
 
 t = [0:T:t0];                     %Muestras de tiempo
-%x = inline('3*cos(2*pi*t)','t');  %Se馻l muestreada
+%x = inline('3*cos(2*pi*t)','t');  %Se帽al muestreada
 %x = inline('4*cos(2*pi*t) + 1.5*cos(10*t)','t');
 x = inline('0.5*sin(2*pi*t) + 1.5*sin(10*t)','t');
 %x = inline('1*cos(2*pi*t) + 1.5*sin(10*t)','t');
@@ -21,97 +21,97 @@ xlabel('t');ylabel('x(t)');grid;
 title('Muestreo');
 axis([-0.1 1.1 -3.1 3.1]);
 
-%---------------Cuantizaci髇-------------------
+%---------------Cuantizaci贸n-------------------
 
 %xmax = 5;     %Amplitud maxima 
 xmax = 3;     %Amplitud maxima 
-n = 2;        %Bits para cuantizaci髇 (2^n = Zonas)
+n = 2;        %Bits para cuantizaci贸n (2^n = Zonas)
 %n = 3;        
 xq = cuantUni(x(t),xmax,n);   %Cuantificar vector
 
 subplot(3,1,2);
 stem(t,xq);
 xlabel('t');ylabel('x(t)');grid;
-title('Cuantizaci髇');
+title('Cuantizaci贸n');
 axis([-0.1 1.1 -3.1 3.1]);
 
-%----------------Codificaci髇-------------------
+%----------------Codificaci贸n-------------------
 
 xc = codifi(xq,xmax,n)     %Codificar vector (numeros)
 xc = codifiBits(xc,n)      %Codificar vector (bits)
 
-%-----------------Se馻lizaci髇------------------
+%-----------------Se帽alizaci贸n------------------
 
-m = 15;                 %Muestras para graficar pulso de la se馻lizaci髇
+m = 15;                 %Muestras para graficar pulso de la se帽alizaci贸n
 figure(2);
 
 %UNRZ
 
-sm = repelem(UNRZ(xc, xmax),m); %Se馻lizaci髇 UNRZ
-t = 0:m*length(xc) - 1  ; %Vector de tiempo para se馻lizaci髇  
+sm = repelem(UNRZ(xc, xmax),m); %Se帽alizaci贸n UNRZ
+t = 0:m*length(xc) - 1  ; %Vector de tiempo para se帽alizaci贸n  
 
 subplot(3,2,1);
 plot(t,sm);
 xlabel('');ylabel('');grid;
-title('Se馻lizaci髇 UNRZ');
+title('Se帽alizaci贸n UNRZ');
 axis([-1 m*length(xc)-1 -xmax-0.5 xmax+0.5]);
 
 %BNRZ
 
-sm = repelem(BNRZ(xc, xmax),m); %Se馻lizaci髇 BNRZ
-t = 0:m*length(xc) - 1;   %Vector de tiempo para se馻lizaci髇  
+sm = repelem(BNRZ(xc, xmax),m); %Se帽alizaci贸n BNRZ
+t = 0:m*length(xc) - 1;   %Vector de tiempo para se帽alizaci贸n  
 
 subplot(3,2,2);
 plot(t,sm);
 xlabel('');ylabel('');grid;
-title('Se馻lizaci髇 BNRZ');
+title('Se帽alizaci贸n BNRZ');
 axis([-1 m*length(xc)-1 -xmax-0.5 xmax+0.5]);
 
 %URZ
 
-sm = repelem(URZ(xc, xmax),m); %Se馻lizaci髇 URZ
-t = 0:m*2*length(xc) - 1 ;  %Vector de tiempo para se馻lizaci髇  
+sm = repelem(URZ(xc, xmax),m); %Se帽alizaci贸n URZ
+t = 0:m*2*length(xc) - 1 ;  %Vector de tiempo para se帽alizaci贸n  
 
 subplot(3,2,3);
 plot(t,sm);
 xlabel('');ylabel('');grid;
-title('Se馻lizaci髇 URZ');
+title('Se帽alizaci贸n URZ');
 axis([-1 m*2*length(xc)-1 -xmax-0.5 xmax+0.5]);
 
 %BRZ
 
-sm = repelem(BRZ(xc, xmax),m); %Se馻lizaci髇 BRZ
-t = 0:m*2*length(xc) - 1 ;  %Vector de tiempo para se馻lizaci髇  
+sm = repelem(BRZ(xc, xmax),m); %Se帽alizaci贸n BRZ
+t = 0:m*2*length(xc) - 1 ;  %Vector de tiempo para se帽alizaci贸n  
 
 subplot(3,2,4);
 plot(t,sm);
 xlabel('');ylabel('');grid;
-title('Se馻lizaci髇 BRZ');
+title('Se帽alizaci贸n BRZ');
 axis([-1 m*2*length(xc)-1 -xmax-0.5 xmax+0.5]);
 
 %AMI RZ
 
-sm = repelem(AMIRZ(xc, xmax),m); %Se馻lizaci髇 AMI RZ
-t = 0:m*2*length(xc) - 1;   %Vector de tiempo para se馻lizaci髇  
+sm = repelem(AMIRZ(xc, xmax),m); %Se帽alizaci贸n AMI RZ
+t = 0:m*2*length(xc) - 1;   %Vector de tiempo para se帽alizaci贸n  
 
 subplot(3,2,5);
 plot(t,sm);
 xlabel('');ylabel('');grid;
-title('Se馻lizaci髇 AMI RZ');
+title('Se帽alizaci贸n AMI RZ');
 axis([-1 m*2*length(xc)-1 -xmax-0.5 xmax+0.5]);
 
 %MANCHESTER
 
-sm = repelem(sManchester(xc, xmax),m); %Se馻lizaci髇 Manchester
-t = 0:m*2*length(xc) - 1;   %Vector de tiempo para se馻lizaci髇  
+sm = repelem(sManchester(xc, xmax),m); %Se帽alizaci贸n Manchester
+t = 0:m*2*length(xc) - 1;   %Vector de tiempo para se帽alizaci贸n  
 
 subplot(3,2,6);
 plot(t,sm);
 xlabel('');ylabel('');grid;
-title('Se馻lizaci髇 Manchester');
+title('Se帽alizaci贸n Manchester');
 axis([-1 m*2*length(xc)-1 -xmax-0.5 xmax+0.5]);
 
-%-----------------Recuperaci髇 se馻l-------------
+%-----------------Recuperaci贸n se帽al-------------
 
 figure(1);
 sa=inline('(sin(x)+(x==0))./(x+(x==0))','x');
@@ -123,4 +123,4 @@ endfor
 subplot(3,1,3);
 plot(t,decoded_ms,'-k');
 xlabel('t');ylabel('x(t)');grid;
-title('Recuperaci髇');
+title('Recuperaci贸n');

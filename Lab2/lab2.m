@@ -1,12 +1,10 @@
 % LABORATORIO 2 - Transmisión digital de señales analogicas
 
 %---------------Muestreo----------------------
-clear;
-clc;
-
 t0 = 1;     %Duración de la señal mensaje 
 f0 = 1;       %Frecuencia de la señal
-T = 1/100;    %Intervalo de muestreo
+T = 1/10;    %Intervalo de muestreo
+%T = 1/100;    %Intervalo de muestreo
 F = 1/T;      %Frecuencia de muestreo
 
 t = [0:T:t0];                     %Muestras de tiempo
@@ -25,7 +23,8 @@ axis([-0.1 1.1 -3.1 3.1]);
 
 %---------------Cuantización-------------------
 
-xmax = 5;     %Amplitud maxima 
+%xmax = 5;     %Amplitud maxima 
+xmax = 3;     %Amplitud maxima 
 n = 2;        %Bits para cuantización (2^n = Zonas)
 %n = 3;        
 xq = cuantUni(x(t),xmax,n);   %Cuantificar vector

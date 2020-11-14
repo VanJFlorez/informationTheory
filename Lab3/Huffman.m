@@ -1,8 +1,5 @@
 %LABORATORIO 3.2 - Codificación Huffman
 
-%y = [0.25 0.1 0.05 0.4 0.2]
-%x = [0.3 0.25 0.2 0.12 0.13]
-
 function HF=Huffman(P)
   
   %P - Probabilidad
@@ -48,6 +45,5 @@ function HF=Huffman(P)
     a = {HF{1,positions} probA  probB}   %Primera parte del vector (Probabilidades)
     b = {HF{1,positions + length(HF)/2} [HF{1,positionsSum + length(HF)/2} 0] [HF{1,positionsSum + length(HF)/2} 1]} %Segunda parte del vector (Codigo)
     HF = {a{} b{}};
-  endif  
-  
+  endif
 endfunction

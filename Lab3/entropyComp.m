@@ -15,6 +15,9 @@ for i = [1:xsize]
   PYgX = [PYgX; PXgYi];
 endfor
 
+PYgX = [0.9 0.1; 0.2 0.8];
+PX = [0.5 0.5];
+
 PX
 PYgX
 

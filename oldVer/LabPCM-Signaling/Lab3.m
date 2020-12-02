@@ -15,7 +15,7 @@ m  = @(tt) A*sin(2*pi*f*tt); % senal original
 
 # SAMPLING ------------------
 Ts = 1/10;        % intervalo de muestreo 
-fs = 1/Ts;       % frecuencia de muestreo. Notar que fs > f ~> 5 > 1
+fs = 1/Ts;       % frecuencia de muestreo. Notar que fs > f ~> 10 > 1
 ts = [0:Ts:t0];    % tiempo muestreo
 ms = m(ts);      % senal muestreada '(ms) m sampled'
 

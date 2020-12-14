@@ -1,51 +1,37 @@
-clc
-clear
 #######
-## Instalar el paquete de entropia con
-## pkg install -forge informationtheory
-## pkg load informationtheory
+## En la practica no es posible calcular la complejidad de Kolmogorov.
+## En otros terminos, es imposible escribir un programa que calcule la
+## complejidad de kolmogorov de cualquier flujo de bits.
+## Lo que se hace es obtener un estimado y una cota superior para el 
+## valor 
 #######
-
-% H < K < H + c
-% 000
-% 001
-% 010
-% 011
-% 100
-% 101
-K = kolmogorov('ABCDE')
-H = entropy([1/6 1/6 1/6 1/6 1/6])
-
-H < K
-H - K
-
-
-K = kolmogorov('XYZ')
-H = entropy([1/3 1/3 1/3])
-
-H < K
-H - K
-
-K = kolmogorov('00011011')
-H = entropy([1/4 1/4 1/4 1/4])
-
-H < K
-H - K
 
 #################################
 # Fase 1
 # Generar cadenas de texto, entre más aleatorias más complejas....
 #################################
-
 % str1 = Generar cadena texto repetida
 % str2 = Generar cadena de texto aleatoria
 % calcular kolmogorov(str1)
 % calcular kolmogorov(str2)
 % comparar
-% esperar str1 < str2
+% esperar K(str1) < K(str2)
 % comentar que la entropía de str1 es más baja por que es más 
 % sencilla pues es más facil que aparezca en la naturaleza y
 % que por tanto tenga menos sorpresa
+
+
+# TODO generar aleatoria
+# TODO generar repetida
+strRan = "fasdkjfañsldjfkasdpfjasdpfkasjñdfkjasdñflk";
+strRep = "abcabcabcabcabcabcabcabcabcabcabcabcabcabc";
+
+kRan = kolmogorov(strRan);
+kRep = kolmogorov(strRep);
+
+if kRan > kRep
+  printf("la aleatoria es mas compleja\n");
+endif
 
 #################################
 # Fase 2
@@ -57,6 +43,11 @@ H - K
 #   - texto
 #   - palabras
 #   - gif
+cartxt = getBitStream('car.txt');
+cartxt
+
+cartxt = fopen('car.jpg', 'r')
+cartxt = fopen('car.webp', 'r')
 
 # comprimir
 # https://octave.org/doc/v4.4.1/File-Archiving-Utilities.html

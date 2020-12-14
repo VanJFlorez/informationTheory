@@ -1,7 +1,0 @@
-describir un carro cada vez más complejamente y ver q su complejidad de kolmo aumenta
-
-palabras en json
-texto en spañol detallado
-dibujo a mano alzada
-foto
-gif

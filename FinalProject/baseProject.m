@@ -4,7 +4,7 @@
 ## complejidad de kolmogorov de cualquier flujo de bits.
 ## Lo que se hace es obtener un estimado y una cota superior para el 
 ## valor 
-#######
+####### 
 
 #################################
 # Fase 1
@@ -19,13 +19,33 @@
 % comentar que la entropía de str1 es más baja por que es más 
 % sencilla pues es más facil que aparezca en la naturaleza y
 % que por tanto tenga menos sorpresa
+clc
+clear
+
+# GENERO
+N = 100;
+strRan = strRandom(N);
+strRep = strRep("abcd", N/4);
+
+strRanFilename = "strRan.txt"
+strRepFilename = "strRep.txt"
+
+# ESCRIBO
+file = fopen(strRanFilename,'w');
+fprintf(file, '%s', strRan);
+fclose(strRanFilename);
+
+file = fopen(strRepFilename,'w');
+fprintf(file, '%s', strRep);
+fclose(strRepFilename);
+
+# Definición
+zip("out/strRan", strRanFilename);
+zip("out/strRep", strRepFilename);
 
 
-# TODO generar aleatoria
-# TODO generar repetida
-strRan = "fasdkjfañsldjfkasdpfjasdpfkasjñdfkjasdñflk";
-strRep = "abcabcabcabcabcabcabcabcabcabcabcabcabcabc";
 
+# Kolmogorov Lempel Ziv
 kRan = kolmogorov(strRan);
 kRep = kolmogorov(strRep);
 
@@ -43,17 +63,23 @@ endif
 #   - texto
 #   - palabras
 #   - gif
-cartxt = getBitStream('car.txt');
-cartxt
-
-cartxt = fopen('car.jpg', 'r')
-cartxt = fopen('car.webp', 'r')
+% carjson = getBitStream('car.json');
+%cartxt = getBitStream('car.txt');
+%carjpg = getBitStream('car.jpg');
+%carpng = getBitStream('car.png');
+%cargif = getBitStream('car.gif');
 
 # comprimir
 # https://octave.org/doc/v4.4.1/File-Archiving-Utilities.html
 #   - texto
 #   - palabras
 #   - gif
+% zip('car.json', 'car.txt')
+zip('out/cartxt', 'car.txt')
+zip('out/carjpg', 'car.jpg')
+zip('out/carpng', 'car.png')
+zip('out/cargif', 'car.gif')
+
 
 # leer tamaños de archivo antes y despues...
 # https://octave.sourceforge.io/octave/function/dir.html
@@ -67,8 +93,6 @@ cartxt = fopen('car.webp', 'r')
 #   - texto
 #   - palabras
 #   - gif
-file = fopen('in.txt', 'r')
-fread(file) % 97 - ascii
 
 # comparar, esperar complejidad mayor en descripción compleja (gif)
 #   - texto

@@ -43,7 +43,12 @@ fclose(strRepFilename);
 zip("out/strRan", strRanFilename);
 zip("out/strRep", strRepFilename);
 
+zipRan = dir('out/strRan.zip');
+zipRep = dir('out/strRep.zip');
 
+if zipRan.bytes > zipRep.bytes
+  printf("quedo bueno\n");
+endif
 
 # Kolmogorov Lempel Ziv
 kRan = kolmogorov(strRan);
@@ -63,23 +68,22 @@ endif
 #   - texto
 #   - palabras
 #   - gif
-% carjson = getBitStream('car.json');
-%cartxt = getBitStream('car.txt');
-%carjpg = getBitStream('car.jpg');
-%carpng = getBitStream('car.png');
-%cargif = getBitStream('car.gif');
+%carjson = getBitStream('car.json');
+cartxt = getBitStream('in/car.txt');
+carjpg = getBitStream('in/car.jpg');
+carpng = getBitStream('in/car.png');
+cargif = getBitStream('in/car.gif');
 
 # comprimir
 # https://octave.org/doc/v4.4.1/File-Archiving-Utilities.html
 #   - texto
 #   - palabras
 #   - gif
-% zip('car.json', 'car.txt')
-zip('out/cartxt', 'car.txt')
-zip('out/carjpg', 'car.jpg')
-zip('out/carpng', 'car.png')
-zip('out/cargif', 'car.gif')
-
+% zip('out/carjson', 'car.json')
+zip('out/cartxt', 'in/car.txt')
+zip('out/carjpg', 'in/car.jpg')
+zip('out/carpng', 'in/car.png')
+zip('out/cargif', 'in/car.gif')
 
 # leer tamaños de archivo antes y despues...
 # https://octave.sourceforge.io/octave/function/dir.html
@@ -87,12 +91,35 @@ zip('out/cargif', 'car.gif')
 #   - palabras
 #   - gif
 
+% zipjson = dir('out/carjson.zip');
+ziptxt = dir('out/cartxt.zip');
+zipjpg = dir('out/carpng.zip');
+zippng = dir('out/carjpg.zip');
+zipgif = dir('out/cargif.zip');
+
+
+% if zipjson.bytes < ziptxt.bytes < zipjpg.bytes < zippng.bytes < zipgif.bytes
+if ziptxt.bytes < zipjpg.bytes < zippng.bytes < zipgif.bytes
+  printf("complejidad por compression es ok\n")
+endif
+
 # leer como cadena de bits
 # https://octave.org/doc/v6.1.0/Opening-and-Closing-Files.html#XREFfopen
 # https://octave.org/doc/v5.2.0/Binary-I_002fO.html
 #   - texto
 #   - palabras
 #   - gif
+
+% Kjson = kolmogorov('out/car.json')
+Ktxt = kolmogorov(cartxt);
+Kjpg = kolmogorov(carjpg);
+Kpng = kolmogorov(carpng);
+Kgif = kolmogorov(cargif);
+
+% if Kjson < Ktxt < Kjpg < Kpng < Kgif
+if Ktxt < Kjpg < Kpng < Kgif
+  printf("complejidad por kolmogorov es ok\n")
+endif
 
 # comparar, esperar complejidad mayor en descripción compleja (gif)
 #   - texto
@@ -104,5 +131,3 @@ zip('out/cargif', 'car.gif')
 # causará más sorpresa, lo cual quiere decir mayor entropia. Esto
 # está directamente relacionado con las cotas que mostramos en el
 # primer avance.
-
-

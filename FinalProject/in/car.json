@@ -1,0 +1,9 @@
+{
+	"caterogia" : "vehiculo",
+	"marca" : "ferrari",
+	"referencia" : "enzo",
+	"año" : "2020",
+	"precio" : "3000 usd",
+	"color" : "rojo",
+	"country" : "usa"
+}

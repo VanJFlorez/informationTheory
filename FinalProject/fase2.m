@@ -42,20 +42,20 @@ endfor
 
 kolmo = [];
 
+figure(2)
+i = 1;
 for str = strings'
   str'
   k = kolmogorov(str');
   kolmo = [kolmo; k];
-endfor
-disp("Kolmogorov para cada cadena respectivamente");
-kolmo
-
-# Pintar imagenes
-figure(2)
-i = 1;
-for k = strings
+  
+  # Pintar imagenes
+  
   fig = writeImage(str);
   subplot(3,3,i);
   image(fig);
+  
   i++;
 endfor
+disp("Kolmogorov para cada cadena respectivamente");
+kolmo

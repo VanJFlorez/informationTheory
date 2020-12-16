@@ -1,10 +1,11 @@
-function strStream = getBitStream(filename)
+function str = getBitStream(filename) 
   file = fopen(filename);
-  bitStream = fread(file, 'uint8');
-  bin = dec2bin(bitStream);
-  strStream = '';
-  for b = bin
-    strStream = strcat(strStream, b);
-    b;
+  bitStream = fread(file, Inf, 'uint8');
+  fclose("all");
+  str = "";
+  for byte = bitStream'
+    for bit = dec2bin(byte)
+      str = strcat(str, bit);
+    endfor
   endfor
 endfunction

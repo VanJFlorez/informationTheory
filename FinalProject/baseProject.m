@@ -58,11 +58,26 @@ if kRan > kRep
   printf("la aleatoria es mas compleja\n");
 endif
 
-#################################
+##########################################################################
 # Fase 2
-# Una descripción más compleja de un objeto implica más kolmogorov
-# - Una imágen vale más que mil palabras
-#################################
+# Una descripción más compleja de un objeto implica más kolmogorov.
+# Segun la relacion del artículo 
+#          H < E[K] < H + c       (15)
+# o en otros terminos
+#          E[K] ~~ nH             (19)
+# Si Kolmogorov es grande, también lo es la entropia. Esto quiere
+# decir que entre más complejo el objeto (o su descripción) en el 
+# universo comun de descripción (en nuestro caso, cadenas de bits)
+# obtener más detalle u obtener un objeto con cualidades más específicas
+# que un objeto genericob el elemento posee mayor entropía.
+#
+# En el siguiente ejemplo vamos a ver que en el mundo real una imágen
+# vale más que mil palabras. Aunque uno podría imaginarse que entre 
+# humanos si la información se transmite de voz a voz, una descripcion
+# en español plano también es igualmente poderosa; todos pueden imaginar.
+# Sin embargo, en el mundo de las cadenas de bits y los decompresores
+# las imágenes son más ricas.       
+##########################################################################
 
 # cargar archivo
 #   - texto

@@ -72,7 +72,7 @@ Kpng = kolmogorov(carpng);
 Kgif = kolmogorov(cargif);
 
 % if Kjson < Ktxt < Kjpg < Kpng < Kgif
-if Ktxt < Kjpg < Kpng < Kgif
+if Ktxt > Kjpg > Kpng > Kgif
   printf("complejidad por kolmogorov es ok\n")
 endif
 

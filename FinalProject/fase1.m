@@ -25,7 +25,7 @@ clear
 
 pkg load statistics
 
-# GENERO
+# Generar
 N = 100;
 strRan = strRandom(N);
 strRep = strRep("abcd", N/4);
@@ -33,7 +33,7 @@ strRep = strRep("abcd", N/4);
 strRanFilename = "strRan.txt"
 strRepFilename = "strRep.txt"
 
-# ESCRIBO
+# Escribir
 file = fopen(strRanFilename,'w');
 fprintf(file, '%s', strRan);
 fclose(strRanFilename);

@@ -60,6 +60,31 @@ endif
 
 ##########################################################################
 # Fase 2
+# Genero cadenas con diferentes generadores aleatorios. Voy a ver la aleatoriedad
+# de cada uno a partir de los valores obtenidos con la funcion kolmogorov.
+# En este caso usamos Kolmogorov para medir aleatoriedad (randomness).
+#
+# Espero que entre más kolmogorov -> más sofisticado es el generador -> más complejidad
+# -> más ruido tendrá mi imagen. 
+# Ejemplo del ranking
+# -Purely random DEFAULT octave
+# -Twisted (pseudorandom)
+# -Beta Distribution	betarnd
+# -Binomial Distribution	binornd
+# -Cauchy Distribution	cauchy_rnd
+# -Chi-Square Distribution	chi2rnd
+# -Univariate Discrete Distribution	discrete_rnd
+# -Empirical Distribution	empirical_rnd
+# -Exponential Distribution	exprnd
+# -F Distribution	frnd
+# -Gamma Distribution	gamrnd
+##########################################################################
+
+
+
+
+##########################################################################
+# Fase 3
 # Una descripción más compleja de un objeto implica más kolmogorov.
 # Segun la relacion del artículo 
 #          H < E[K] < H + c       (15)

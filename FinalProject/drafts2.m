@@ -14,15 +14,21 @@
 #x = imread("in/car.jpg");
 #x = imread("in/car.png");
 #size(x)
-clc 
+# str = strRandom(100)
+
+
+
+clc
 clear
-file = fopen("in/car.jpg");
-bitStream = fread(file, Inf, 'uint8');
-fclose("all");
-str = "";
-for byte = bitStream'
-  for bit = dec2bin(byte)
-    str = strcat(str, bit);
-  endfor
+N = 10
+str = strRandom(N*N)
+img = [];
+row = [];
+sz = size(str)(2);
+for i = 1:sz
+  row = [row str(i)];
+  if mod(i, 10) == 0
+    img = [img; [row]];
+    row = [];
+  endif
 endfor
-str

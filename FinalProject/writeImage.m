@@ -1,4 +1,4 @@
-function wImage=writeImageFel(txt)
+function fig=writeImage(txt)
 
   %txt - Cadena del archivo de texto
   

@@ -4,8 +4,8 @@
 # de cada uno a partir de los valores obtenidos con la funcion kolmogorov.
 # En este caso usamos Kolmogorov para medir aleatoriedad (randomness).
 #
-# Espero que entre más kolmogorov -> más sofisticado es el generador -> más complejidad
-# -> más ruido tendrá mi imagen. 
+# Espero que entre mï¿½s kolmogorov -> mï¿½s sofisticado es el generador -> mï¿½s complejidad
+# -> mï¿½s ruido tendrï¿½ mi imagen. 
 # Ejemplo del ranking
 # -Purely random DEFAULT octave
 # -Twisted (pseudorandom)
@@ -24,13 +24,14 @@ clear
 
 
 pkg load statistics
+
 N = 35*35; #   5   5   7   7
 strings = [];
 #       rep -----------> purely random
 frac = [1, 5, 25, 35, 49, 175, 1225];
 
 # Generar cadenas de complejidad variable
-disp("Cadenas de texto cada vez más aleatorias, todas miden lo mismo");
+disp("Cadenas de texto cada vez mï¿½s aleatorias, todas miden lo mismo");
 for i = frac
   str = strCust(i, N/i);
   size(str)

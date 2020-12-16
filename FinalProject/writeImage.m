@@ -2,15 +2,15 @@ function fig=writeImage(txt)
 
   %txt - Cadena del archivo de texto
   
-  n = length(txt)
-  pixelsN = ceil(sqrt(n))   #Para la matriz imagen, la cual sera cudrada
+  n = length(txt);
+  pixelsN = ceil(sqrt(n));   #Para la matriz imagen, la cual sera cudrada
   left = mod(n,pixelsN);
   
   for i=1:left
     txt=strcat(txt,"0");
   endfor
   
-  txt
+  txt;
   
   r = zeros(pixelsN, pixelsN);
   %g = zeros(pixelsN, pixelsN)
@@ -26,7 +26,7 @@ function fig=writeImage(txt)
     
   endfor  
   
-  r
+  r;
   
   fig=gray2ind (r);
   image(fig);

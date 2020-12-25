@@ -36,10 +36,13 @@ for i = frac
   str = strCust(i, N/i);
   size(str)
   
-  name = strcat("name", num2str(22), ".txt")
+  # escribir para comprimir
+  name = strcat("out/", num2str(i), ".txt")
   file = fopen(name,'w');
   fprintf(file, '%s', str);
   fclose(name);
+  
+  zip
   
   strings = [strings; [str]];
 endfor
